@@ -4,4 +4,5 @@ Está creada en base:
 
 * NodeJS
 * TypeScript
+* ExpressJS
 * Socket IO
