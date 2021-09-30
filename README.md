@@ -1,5 +1,7 @@
-# Socket Server
+Aplicación backend que maneja votaciones por banda musical con sockets
 
-Este backend contiene todo lo necesario para configurar un servidor de express + socket.io.
+Está creada en base: 
 
-Cualquier conexión adicional de sockets, se puede hacer en el archivo ```models/sockets.js``` y cualquier middleware adicional de express, se puede realizar en el archivo ```models/server.js```
+* NodeJS
+* TypeScript
+* Socket IO
