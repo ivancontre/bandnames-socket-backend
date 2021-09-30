@@ -7,7 +7,9 @@ export default class BandList {
 
     constructor() {
         this.bands = [
-            new Band('Linkin Park')
+            new Band('Linkin Park'),
+            new Band('Slipknot'),
+            new Band('The Cure')
         ]
     }
 
@@ -18,7 +20,7 @@ export default class BandList {
     }
 
     removeBand(id: string) {
-        return this.bands.filter((band: Band) => band.id !== id);
+        this.bands = this.bands.filter((band: Band) => band.id !== id);
     }
 
     getBands() {

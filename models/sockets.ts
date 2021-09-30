@@ -6,7 +6,6 @@ export default class Sockets {
     bandList: BandList;
 
     constructor( io: socketio.Server ) {
-
         this.io = io;
         this.bandList = new BandList();
         this.socketEvents();
@@ -20,15 +19,25 @@ export default class Sockets {
 
             socket.emit('band-list', this.bandList.getBands());
 
-
-
-            // Escuchar evento: mensaje-to-server
-            socket.on('mensaje-to-server', ( data: any ) => {
-                console.log( data );
-                
-                this.io.emit('mensaje-from-server', data );
+            socket.on('band-vote', (data: any) => {
+                this.bandList.increaseVotes(data.id);
+                this.io.emit('band-list', this.bandList.getBands());
             });
-            
+
+            socket.on('band-remove', (data: any) => {
+                this.bandList.removeBand(data.id);
+                this.io.emit('band-list', this.bandList.getBands());
+            });
+
+            socket.on('band-change-name', (data: any) => {
+                this.bandList.changeBandName(data.id, data.name);
+                this.io.emit('band-list', this.bandList.getBands());
+            });
+
+            socket.on('band-add', (data: any) => {
+                this.bandList.addBand(data.name);
+                this.io.emit('band-list', this.bandList.getBands());
+            });
         
         });
     }
